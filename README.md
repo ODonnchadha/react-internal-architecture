@@ -1,2 +1,53 @@
-# react-internal-architecture
-Culled from a Pluralsight class entitled "React's Internal Architecture."
+## React's Internal Architecture
+
+- OVERVIEW:
+    - Explore React's fiber architecture and how the reconciliation algorithm efficiently updates the DOM.
+    - Discover how React's event system works and triggers state updates that lead to re-rendering cycles.
+    - How state and hooks are managed inside React.
+    - How useEffect works under-the-hood.
+
+- REACT ELEMENTS & THE FIBER TREE:
+    - Accurate mental model. Deep dive. React: Other people's JavaScript.
+    - React Internals:
+            - React Elements & the Fiber Tree: Underlying data structures.
+            - Events and re-rendering: Core loop.
+            - Hooks, state, and effects. Where does state live? How do hooks work? Understand limitations.
+        - Mental model: How you believe something works.
+        - Benefits of an accurate mental model:
+            - Architect with confidence and clarity. Why. Not just how.
+            - Debug more quickly and accurately.
+        - Elements: A blueprint as to what the DOM should look like.
+        - Fiber Tree: A tiny model home before the real house is built.
+        - The DOM: Real UI that users interact with.
+        - JSX. A series of function calls. Creating React elements.
+            - Fragment. A JavaScript object.
+        - Render: (In React) To execute a component function.
+        - Out of the function: React Element:
+            - A lightweight JavaScript object that describes a piece of UI.
+                - Not the DOM. Not the Browser objects that cause the browser to generate the UI.
+                - Elements nested via props.
+                    - JSX => Collections of React Elements. Plain JavaScript Objects describing what the DOM should be.
+    - Building the Fiber Tree: A virtual DOM. Structure between the DOM and our components.
+        - Reacts calls it "The Fiber Tree."
+        - `FiberNode` Individual node of a second tree. Created, initially, from the React Elements generated.
+            - Special. And different. The fiber responsible for the creation of a DOM element.
+                - The object sticks around between renders.
+        - Fiber: A JavaScript object that describes a piece of UI and information thta is needed to determine how to update the UI.
+            - React Elements similiar to a blueprint.
+            - Fiber nodes are similiar to a model. More concrete. Less expensive to build and adjust. Defined steps. Plain JavaScript object.
+                - Represents a DOM element or a component.
+                - Represents the work to update the DOM and the information and data needed to do it.
+                - Sticks around longer.
+    - Fiber Node Structure:
+        - JavaScript objects and reconciliation.
+            - Very expensive to create and update DOM elements. App helps minimize touching *real* DOM.
+            - A child may have siblings. A linked list. memoizedProps. Functions with parameters.
+    - Trees have forks. Different branches. (1) Current state. (2) Intended state.
+        - React caculates in order to update the DOM. Current versus Work in progress.
+            - Reconciliation Algorithm. Efficient manner in which to update the *real* DOM.
+
+- EVENTS & THE RE-RENDERING PROCESS:
+    - 
+
+- STATE MENEGEMENT & HOOKS:
+- USEEFFECT & DEPENENCY MANAGEMENT:
